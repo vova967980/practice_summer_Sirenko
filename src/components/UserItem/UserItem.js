@@ -14,12 +14,10 @@ class UserItem extends Component {
     render() {
 
         return (
-
-
             <>
                 {
-                    this.props.item && <div className={UserItemStyles.userItem} onClick={this.props.changeState}>
-                        <tr>
+                    this.props.item && <div className={UserItemStyles.userItem} onClick={this.props.changeState} id={this.props.item.id.value} >
+                        <tr >
                             <td className={UserItemStyles.tableElem}>
                                 <div className={UserItemStyles.imageContainer}>
                                     <img src={this.props.item.picture.large} alt="image"/>

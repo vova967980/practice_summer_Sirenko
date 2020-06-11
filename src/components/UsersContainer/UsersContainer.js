@@ -12,10 +12,6 @@ class UsersContainer extends Component {
         };
     }
 
-    changeState = ( e ) => {
-        this.state.whichIsOpened = e.target.id;
-    };
-
     componentDidMount() {
         for ( let i = 0; i < 10; i++ ) {
 
@@ -32,12 +28,23 @@ class UsersContainer extends Component {
     }
 
     render() {
-        const listItems = this.state.items.map((item)=>
+        const changeState = ( e ) => {
+            if(this.state.whichIsOpened === e.target.id){
+                this.setState({
+                                  whichIsOpened: ""
+                              });
+            }else{
+                this.setState({
+                                  whichIsOpened: e.target.id
+                              });
+            }
+        };
+        let listItems = this.state.items.map((item)=>
            this.state.whichIsOpened === item.id.value
-               ? (<><UserItem changeState={this.changeState} opened="true" item={item}/>
+               ? (<><UserItem changeState={changeState} opened="true" item={item}/>
                    <UserItemMore/>
                </>)
-               : <><UserItem changeState={this.changeState} item={item}/></>
+               : <><UserItem changeState={changeState} item={item}/></>
         );
 
         return (
@@ -55,15 +62,6 @@ class UsersContainer extends Component {
                 </thead>
                 <tbody>
                 {listItems}
-                {
-                    this.state.whichIsOpened === "name"
-                        ? (<><UserItem changeState={this.changeState} opened="true"/>
-                            <UserItemMore/>
-                        </>)
-                        : <><UserItem changeState={this.changeState}/></>
-                }
-
-                <UserItem changeState={this.changeState}/>
                 </tbody>
             </table>
         );
