@@ -7,7 +7,7 @@ function MainContainer() {
     return (
         <div className={mainContainerStyles.mainBlock}>
             <div className={mainContainerStyles.subBlock}>
-                <FindUser/>
+                <FindUser placeholder="Username"/>
                 <UsersContainer/>
 
             </div>
