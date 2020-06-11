@@ -13,7 +13,7 @@ class UsersContainer extends Component {
     }
 
     componentDidMount() {
-        for ( let i = 0; i < 10; i++ ) {
+        for ( let i = 0; i < 15; i++ ) {
 
             fetch( "https://randomuser.me/api/" )
                 .then( res => res.json() )
@@ -22,29 +22,31 @@ class UsersContainer extends Component {
                         this.setState( {
                                            items: [...this.state.items, result.results[0]]
                                        } );
-                        console.log( this.state.items );
+
                     } )
         }
+
     }
 
     render() {
         const changeState = ( e ) => {
-            if(this.state.whichIsOpened === e.target.id){
-                this.setState({
-                                  whichIsOpened: ""
-                              });
-            }else{
-                this.setState({
-                                  whichIsOpened: e.target.id
-                              });
+            if ( this.state.whichIsOpened === e.target.id ) {
+                this.setState( {
+                                   whichIsOpened: ""
+                               } );
+            } else {
+                this.setState( {
+                                   whichIsOpened: e.target.id
+                               } );
             }
         };
-        let listItems = this.state.items.map((item)=>
-           this.state.whichIsOpened === item.id.value
-               ? (<><UserItem changeState={changeState} opened="true" item={item}/>
-                   <UserItemMore/>
-               </>)
-               : <><UserItem changeState={changeState} item={item}/></>
+        let listItems = this.state.items.map( ( item ) =>
+                                                  this.state.whichIsOpened === item.id.value
+                                                      ? (<><UserItem changeState={changeState} opened="true"
+                                                                     item={item}/>
+                                                          <UserItemMore item={item}/>
+                                                      </>)
+                                                      : <><UserItem changeState={changeState} item={item}/></>
         );
 
         return (

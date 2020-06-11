@@ -16,7 +16,7 @@ class UserItem extends Component {
         return (
             <>
                 {
-                    this.props.item && <div className={UserItemStyles.userItem} onClick={this.props.changeState} id={this.props.item.id.value} >
+                    this.props.item.id.value && <div className={UserItemStyles.userItem} onClick={this.props.changeState} id={this.props.item.id.value} >
                         <tr >
                             <td className={UserItemStyles.tableElem}>
                                 <div className={UserItemStyles.imageContainer}>
