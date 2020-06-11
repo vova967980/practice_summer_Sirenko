@@ -1,5 +1,8 @@
 
-
+canvas{
+  width: 100% !important;
+  height: auto !important;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

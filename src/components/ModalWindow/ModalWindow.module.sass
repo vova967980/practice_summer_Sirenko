@@ -1,0 +1,38 @@
+
+
+.background
+  position: absolute
+  z-index: 99
+  min-height: 100vh
+  min-width: 100vw
+  top: 0
+  left: 0
+  background-color: rgba(0,0,0,0.5)
+
+.windowContainer
+  position: absolute
+  min-height: 100vh
+  min-width: 100vw
+  top: 0
+  left: 0
+  display: flex
+  justify-content: center
+  align-items: center
+
+.modalWindowContainer
+  z-index: 999
+  pointer-events: fill
+  display: flex
+  position: relative
+  width: 50%
+  height: auto
+  background-color: white
+  border-radius: 10px
+
+.closeIcon
+  position: absolute
+  right: 5px
+  top: 5px
+
+.closeIcon:hover
+  cursor: pointer

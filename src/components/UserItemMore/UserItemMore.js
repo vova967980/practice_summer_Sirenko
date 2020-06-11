@@ -3,6 +3,8 @@ import UserItemMoreStyles               from "./UserItemMoreStyles.module.sass"
 import { mdiHumanFemale, mdiHumanMale } from '@mdi/js';
 import Icon                             from "@mdi/react";
 import moment                           from "moment";
+import withContext                      from "../HoCs/withContext";
+import AppContext                       from "../../store";
 
 class UserItemMore extends Component {
     constructor( props ) {
@@ -10,6 +12,7 @@ class UserItemMore extends Component {
     }
 
     render() {
+
         return (
             <>
                 {
@@ -49,4 +52,6 @@ class UserItemMore extends Component {
     }
 }
 
-export default UserItemMore;
+UserItemMore.context = AppContext;
+
+export default withContext(UserItemMore);

@@ -3,6 +3,8 @@ import UserItemStyles             from './UserItemStyles.module.sass'
 import { mdiPlusThick, mdiMinus } from '@mdi/js';
 import Icon                       from '@mdi/react';
 import classnames                 from "classnames";
+import withContext                from "../HoCs/withContext";
+import AppContext                 from "../../store";
 
 
 class UserItem extends Component {
@@ -11,7 +13,19 @@ class UserItem extends Component {
 
     }
 
+    componentDidMount() {
+        if(this.props.item.id.value){
+            if ( this.props.item.gender === "male" ) {
+                this.props.setMaleCount( this.props.maleCount + 1 );
+            } else {
+                this.props.setFemaleCount( this.props.femaleCount + 1 );
+            }
+        }
+    }
+
     render() {
+
+
 
         return (
             <>
@@ -53,4 +67,6 @@ class UserItem extends Component {
     }
 }
 
-export default UserItem;
+UserItem.context = AppContext;
+
+export default withContext(UserItem);

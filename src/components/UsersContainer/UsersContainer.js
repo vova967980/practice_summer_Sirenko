@@ -24,12 +24,15 @@ class UsersContainer extends Component {
                         this.setState( {
                                            items: [...this.state.items, result.results[0]]
                                        } );
-                    } )
+
+                    } );
+
         }
     }
 
     render() {
-        const {usernameValue} = this.props;
+        const {usernameValue, maleCount, femaleCount} = this.props;
+
 
         const changeState = ( e ) => {
             if ( this.state.whichIsOpened === e.target.id ) {
@@ -42,16 +45,18 @@ class UsersContainer extends Component {
                                } );
             }
         };
-        let listItems = this.state.items.map( ( item ) =>
-                                                  this.state.whichIsOpened === item.id.value
+        let listItems = this.state.items.map( ( item ) =>  this.state.whichIsOpened === item.id.value
                                                       ? (<><UserItem changeState={changeState} opened="true"
                                                                      item={item}/>
                                                           <UserItemMore item={item}/>
                                                       </>)
-                                                      : item.name.first.match( usernameValue ) && usernameValue!== null
+                                                      : item.name.first.match( usernameValue ) && usernameValue !== null
                                                           ? <><UserItem changeState={changeState} item={item}/></>
                                                           : usernameValue === null && <><UserItem changeState={changeState} item={item}/></>
         );
+
+
+
 
         return (
             <table className={UsersContainerStyles.usersContainer}>
