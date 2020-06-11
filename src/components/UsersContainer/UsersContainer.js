@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import UsersContainerStyles from './UsersContainerStyles.module.sass'
 import UserItem             from "../UserItem/UserItem";
 import UserItemMore         from "../UserItemMore/UserItemMore";
+import AppContext           from "../../store";
+import withContext          from "../HoCs/withContext";
 
 class UsersContainer extends Component {
     constructor( props ) {
@@ -22,13 +24,13 @@ class UsersContainer extends Component {
                         this.setState( {
                                            items: [...this.state.items, result.results[0]]
                                        } );
-
                     } )
         }
-
     }
 
     render() {
+        const {usernameValue} = this.props;
+
         const changeState = ( e ) => {
             if ( this.state.whichIsOpened === e.target.id ) {
                 this.setState( {
@@ -46,7 +48,9 @@ class UsersContainer extends Component {
                                                                      item={item}/>
                                                           <UserItemMore item={item}/>
                                                       </>)
-                                                      : <><UserItem changeState={changeState} item={item}/></>
+                                                      : item.name.first.match( usernameValue ) && usernameValue!== null
+                                                          ? <><UserItem changeState={changeState} item={item}/></>
+                                                          : usernameValue === null && <><UserItem changeState={changeState} item={item}/></>
         );
 
         return (
@@ -70,4 +74,6 @@ class UsersContainer extends Component {
     }
 }
 
-export default UsersContainer;
+UsersContainer.contextType = AppContext;
+
+export default withContext( UsersContainer );
