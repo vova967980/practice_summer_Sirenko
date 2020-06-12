@@ -6,7 +6,6 @@ import classnames                 from "classnames";
 import withContext                from "../HoCs/withContext";
 import AppContext                 from "../../store";
 
-
 class UserItem extends Component {
     constructor( props ) {
         super( props );
@@ -14,7 +13,7 @@ class UserItem extends Component {
     }
 
     componentDidMount() {
-        if(this.props.item.id.value){
+        if ( this.props.item.id.value ) {
             if ( this.props.item.gender === "male" ) {
                 this.props.setMaleCount( this.props.maleCount + 1 );
             } else {
@@ -25,13 +24,13 @@ class UserItem extends Component {
 
     render() {
 
-
-
         return (
             <>
                 {
-                    this.props.item.id.value && <div className={UserItemStyles.userItem} onClick={this.props.changeState} id={this.props.item.id.value} >
-                        <tr >
+                    this.props.item.id.value &&
+                    <div className={UserItemStyles.userItem} onClick={this.props.changeState}
+                         id={this.props.item.id.value}>
+                        <tr>
                             <td className={UserItemStyles.tableElem}>
                                 <div className={UserItemStyles.imageContainer}>
                                     <img src={this.props.item.picture.large} alt="image"/>
@@ -69,4 +68,4 @@ class UserItem extends Component {
 
 UserItem.context = AppContext;
 
-export default withContext(UserItem);
+export default withContext( UserItem );

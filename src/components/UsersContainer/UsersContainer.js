@@ -31,7 +31,7 @@ class UsersContainer extends Component {
     }
 
     render() {
-        const {usernameValue, maleCount, femaleCount} = this.props;
+        const {usernameValue} = this.props;
 
 
         const changeState = ( e ) => {
