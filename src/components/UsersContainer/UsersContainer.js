@@ -32,7 +32,9 @@ class UsersContainer extends Component {
 
     render() {
         const {usernameValue} = this.props;
-
+        if(usernameValue){
+            this.state.whichIsOpened = "";
+        }
 
         const changeState = ( e ) => {
             if ( this.state.whichIsOpened === e.target.id ) {
@@ -54,8 +56,6 @@ class UsersContainer extends Component {
                                                           ? <><UserItem changeState={changeState} item={item}/></>
                                                           : usernameValue === null && <><UserItem changeState={changeState} item={item}/></>
         );
-
-
 
 
         return (
